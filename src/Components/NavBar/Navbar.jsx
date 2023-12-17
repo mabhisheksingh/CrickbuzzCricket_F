@@ -3,6 +3,7 @@ import crickBuzzICON from "../../assets/crickBuzzImage.png";
 import "./Navbar.css";
 import { NavBarData } from "../../utils/NavBar.data";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import { FaSortDown } from "react-icons/fa";
 
 function NavbarOptions() {
   const [idDropDownOpen, setIsDropDown] = useState({
@@ -33,7 +34,7 @@ function NavbarOptions() {
             if (items.hasSubOptions) {
               return (
                 <li
-                  className="relative  h-full text-white p-1 hover:bg-green-950 cursor-pointer"
+                  className="relative  h-full text-white p-1 hover:bg-green-950 cursor-pointer "
                   key={items.id}
                   hidden={items.hidden}
                   onMouseEnter={() => openDropDown(items.id)}
@@ -41,16 +42,16 @@ function NavbarOptions() {
                 >
                   <div className="flex items-center h-full">
                     <span title={items.Description}>{items.Name} </span>
-                    <div>{<SlArrowDown />}</div>
+                    <div>{<FaSortDown style={{ color: 'white' }} />}</div>
                   </div>
 
-                  <ul className="absolute top-full bg-white">
+                  <ul className="absolute top-full  bg-white">
                     {idDropDownOpen.isOpen &&
                       idDropDownOpen.id == items.id &&
                       items.subOptions.map((item, subIndex) => {
                         return (
                           <li
-                            className="p-2 text-black hover:bg-slate-300 cursor-pointer min-w-max"
+                            className="px-3 py-1 text-black bg-slate-200 hover:bg-slate-300 cursor-pointer min-w-max"
                             key={item.id}
                             hidden={item.hidden}
                           >
@@ -93,8 +94,8 @@ function NavbarOptions() {
 
 function Navbar() {
   return (
-    <>
-      <div className="max-h-full min-h-full flex bg-green-700">
+    <nav>
+      <div className="max-h-full min-h-full flex bg-green-600">
         <img className=" h-10" src={crickBuzzICON} alt="Failed" />
         <NavbarOptions />
       </div>
@@ -106,7 +107,7 @@ function Navbar() {
         <div className="option">Abhishek DIngh</div>
         <div className="option">Abhishek DIngh</div>
       </div> */}
-    </>
+    </nav>
   );
 }
 
